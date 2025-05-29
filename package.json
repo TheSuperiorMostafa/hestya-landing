@@ -1,0 +1,30 @@
+{
+  "name": "hestya-landing",
+  "version": "1.0.0",
+  "description": "Hestya - Your community, connected. Beautiful coming soon landing page.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "npx vercel --prod",
+    "deploy:netlify": "npx netlify deploy --prod --dir .",
+    "preview": "npx serve ."
+  },
+  "keywords": [
+    "hestya",
+    "property-management",
+    "landing-page",
+    "coming-soon",
+    "real-estate"
+  ],
+  "author": "Hestya Team",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheSuperiorMostafa/Hestia2.git"
+  },
+  "homepage": "https://hestya.app"
+} 

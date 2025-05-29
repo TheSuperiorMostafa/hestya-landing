@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hestya - Coming Soon | Modern Property Management Platform</title>
+    <meta name="description" content="Hestya - Your community, connected. Revolutionary property management platform launching soon. Join the waitlist for early access.">
+    <meta name="keywords" content="property management, community, residential, apartments, condos, HOA, property tech, real estate">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='%2334d399' stroke-width='2' opacity='0.3'/%3E%3Cpath d='M25 65 L25 45 L40 30 L50 35 L60 30 L75 45 L75 65 M35 65 L35 50 L50 50 L50 65 M60 65 L60 50 L70 50 L70 65' fill='none' stroke='%2334d399' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='42' cy='42' r='2' fill='%2334d399'/%3E%3Ccircle cx='58' cy='42' r='2' fill='%2334d399'/%3E%3C/svg%3E">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hestya.app/">
+    <meta property="og:title" content="Hestya - Coming Soon | Modern Property Management Platform">
+    <meta property="og:description" content="Your community, connected. Revolutionary property management platform launching soon.">
+    <meta property="og:image" content="https://hestya.app/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hestya.app/">
+    <meta property="twitter:title" content="Hestya - Coming Soon">
+    <meta property="twitter:description" content="Your community, connected. Revolutionary property management platform launching soon.">
+    <meta property="twitter:image" content="https://hestya.app/og-image.png">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #34d399;
+            --secondary-green: #10b981;
+            --dark-green: #059669;
+            --background-light: #ffffff;
+            --background-dark: #0f172a;
+            --text-light: #1f2937;
+            --text-dark: #f8fafc;
+            --text-secondary: #6b7280;
+            --gradient-start: #34d399;
+            --gradient-end: #10b981;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Enhanced background with animated particles */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .bg-decoration::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: drift 20s linear infinite;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: float-random 15s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
+        .shape:nth-child(2) { width: 120px; height: 120px; top: 60%; left: 80%; animation-delay: 2s; }
+        .shape:nth-child(3) { width: 60px; height: 60px; top: 80%; left: 20%; animation-delay: 4s; }
+        .shape:nth-child(4) { width: 100px; height: 100px; top: 30%; left: 70%; animation-delay: 6s; }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 700px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 2rem;
+            background: var(--glass-bg);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, var(--primary-green), var(--secondary-green), var(--primary-green));
+            border-radius: 30px;
+            z-index: -1;
+            opacity: 0.3;
+            animation: rotate 3s linear infinite;
+        }
+
+        .logo svg {
+            width: 70px;
+            height: 70px;
+            fill: white;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #f0f9ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.75rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            line-height: 1.6;
+            letter-spacing: 0.01em;
+        }
+
+        .launch-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--glass-bg);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .launch-badge::before {
+            content: '🚀';
+            font-size: 1.2rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .feature {
+            background: var(--glass-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+
+        .feature:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .feature-icon::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, var(--primary-green), var(--secondary-green));
+            border-radius: 17px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        .feature h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+
+        .feature p {
+            font-size: 1rem;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+
+        .notify-section {
+            background: var(--glass-bg);
+            padding: 3rem 2.5rem;
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notify-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-green), var(--secondary-green), var(--primary-green));
+        }
+
+        .notify-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 450px;
+            margin: 0 auto 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .email-input {
+            flex: 1;
+            min-width: 280px;
+            padding: 1.25rem 1.75rem;
+            border: none;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--text-light);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .email-input:focus {
+            background: white;
+            box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .email-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .notify-btn {
+            padding: 1.25rem 2.5rem;
+            background: var(--dark-green);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notify-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .notify-btn:hover {
+            background: #047857;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .notify-btn:hover::before {
+            left: 100%;
+        }
+
+        .waitlist-info {
+            margin-top: 1.5rem;
+            opacity: 0.85;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            width: 56px;
+            height: 56px;
+            background: var(--glass-bg);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            position: relative;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, var(--primary-green), var(--secondary-green));
+            border-radius: 17px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .social-link:hover::before {
+            opacity: 0.3;
+        }
+
+        .social-link svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .footer {
+            margin-top: 4rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes float-random {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, -20px) rotate(90deg); }
+            50% { transform: translate(-10px, -30px) rotate(180deg); }
+            75% { transform: translate(-20px, 10px) rotate(270deg); }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+            100% { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(52, 211, 153, 0.3); }
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3rem;
+            }
+
+            .subtitle {
+                font-size: 1.4rem;
+            }
+
+            .email-form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .email-input {
+                min-width: 100%;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+
+            .notify-section {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .logo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .logo svg {
+                width: 60px;
+                height: 60px;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .feature {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Success message styles */
+        .success-message {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            backdrop-filter: blur(10px);
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-decoration">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <!-- Enhanced Hestia Logo SVG -->
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+                <path d="M25 65 L25 45 L40 30 L50 35 L60 30 L75 45 L75 65 M35 65 L35 50 L50 50 L50 65 M60 65 L60 50 L70 50 L70 65" 
+                      fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="42" cy="42" r="2" fill="currentColor"/>
+                <circle cx="58" cy="42" r="2" fill="currentColor"/>
+            </svg>
+        </div>
+
+        <!-- Launch Badge -->
+        <div class="launch-badge">
+            Launching Soon - Join the Revolution
+        </div>
+
+        <!-- Main Content -->
+        <h1 class="title">Hestya</h1>
+        <p class="subtitle">Your community, connected</p>
+
+        <!-- Features Grid -->
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3>Smart Property Management</h3>
+                <p>Streamlined tools for managing residential communities with AI-powered insights and automation</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M23 21V19C23 18.1645 22.7155 17.3541 22.2094 16.7007C21.7033 16.0473 20.9999 15.5902 20.2 15.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 3.13C16.8003 3.35031 17.5037 3.80771 18.0098 4.46117C18.5159 5.11462 18.8004 5.92502 18.8004 6.76C18.8004 7.59498 18.5159 8.40538 18.0098 9.05883C17.5037 9.71229 16.8003 10.1697 16 10.39" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3>Community Connection</h3>
+                <p>Bringing residents together through digital community features, events, and seamless communication</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3>Modern Platform</h3>
+                <p>Built with cutting-edge technology for the best user experience across iOS, web, and mobile platforms</p>
+            </div>
+        </div>
+
+        <!-- Notify Section -->
+        <div class="notify-section">
+            <h2 class="notify-title">Be the first to experience the future</h2>
+            <form class="email-form" onsubmit="handleNotifySubmit(event)">
+                <input 
+                    type="email" 
+                    class="email-input" 
+                    placeholder="Enter your email address"
+                    required
+                    id="emailInput"
+                >
+                <button type="submit" class="notify-btn">Join Waitlist</button>
+            </form>
+            <div class="success-message" id="successMessage">
+                🎉 Thank you! You're now on the waitlist. We'll notify you when Hestya launches.
+            </div>
+            <div class="waitlist-info">
+                <p>Join our exclusive waitlist and get:</p>
+                <p>✨ Early access to Hestya • 🎁 Special launch pricing • 📱 Beta testing opportunities</p>
+            </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="https://twitter.com/hestya" class="social-link" title="Follow us on Twitter" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M23 3C22.0424 3.67548 20.9821 4.19211 19.86 4.53C19.2577 3.83751 18.4573 3.34669 17.567 3.12393C16.6767 2.90116 15.7395 2.95718 14.8821 3.28445C14.0247 3.61173 13.2884 4.19445 12.773 4.95371C12.2575 5.71297 11.9877 6.61435 12 7.53V8.53C10.2426 8.57557 8.50127 8.18581 6.93101 7.39624C5.36074 6.60667 4.01032 5.43666 3 4C3 4 -1 13 8 17C5.94053 18.398 3.48716 19.099 1 19C10 24 21 19 21 7.5C20.9991 7.22145 20.9723 6.94359 20.92 6.67C21.9406 5.66349 22.6608 4.39271 23 3V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <a href="https://linkedin.com/company/hestya" class="social-link" title="Connect on LinkedIn" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 8C18.5013 8 20.9049 9.05357 22.6274 10.8761C24.3499 12.6986 25.4035 15.1022 25.4035 17.6035V21H20.8035V17.6035C20.8035 16.8522 20.5052 16.1317 19.9738 15.6003C19.4424 15.0689 18.7219 14.7706 17.9706 14.7706C17.2193 14.7706 16.4988 15.0689 15.9674 15.6003C15.436 16.1317 15.1377 16.8522 15.1377 17.6035V21H10.5377V17.6035C10.5377 15.1022 11.5913 12.6986 13.3138 10.8761C15.0363 9.05357 17.4399 8 19.9412 8H16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="2" y="9" width="5" height="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="4.5" cy="4.5" r="2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <a href="mailto:hello@hestya.app" class="social-link" title="Email us" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2024 Hestya. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">Revolutionizing property management, one community at a time.</p>
+        </div>
+    </div>
+
+    <script>
+        function handleNotifySubmit(event) {
+            event.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            const successMessage = document.getElementById('successMessage');
+            
+            // Simple validation
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address');
+                return;
+            }
+
+            // Here you would typically send the email to your backend
+            // For now, we'll show a success message
+            successMessage.classList.add('show');
+            document.getElementById('emailInput').value = '';
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+
+            // Optional: Send to a service like Mailchimp, ConvertKit, etc.
+            // fetch('/api/waitlist', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({ email })
+            // });
+        }
+
+        // Enhanced interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Parallax effect for background
+            let ticking = false;
+            
+            function updateParallax(e) {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        const x = e.clientX / window.innerWidth;
+                        const y = e.clientY / window.innerHeight;
+                        
+                        const shapes = document.querySelectorAll('.shape');
+                        shapes.forEach((shape, index) => {
+                            const speed = (index + 1) * 0.5;
+                            const xOffset = (x - 0.5) * speed * 20;
+                            const yOffset = (y - 0.5) * speed * 20;
+                            shape.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+                        });
+                        
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+
+            document.addEventListener('mousemove', updateParallax);
+
+            // Smooth scroll for any future anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add intersection observer for animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.feature').forEach(feature => {
+                feature.style.opacity = '0';
+                feature.style.transform = 'translateY(20px)';
+                feature.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(feature);
+            });
+        });
+
+        // Add some Easter eggs
+        let clickCount = 0;
+        document.querySelector('.logo').addEventListener('click', function() {
+            clickCount++;
+            if (clickCount === 5) {
+                this.style.animation = 'float 0.5s ease-in-out infinite';
+                setTimeout(() => {
+                    this.style.animation = 'float 3s ease-in-out infinite';
+                    clickCount = 0;
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html> 
