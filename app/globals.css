@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles */
+body {
+  @apply bg-white text-gray-900 antialiased;
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(49, 221, 194, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(49, 221, 194, 0.6);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes scrollPhone {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Gradient text animation */
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Blur-in animations */
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: blur(20px);
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1);
+  }
+}
+
+@keyframes blurInUp {
+  from {
+    opacity: 0;
+    filter: blur(20px);
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes blurInLeft {
+  from {
+    opacity: 0;
+    filter: blur(20px);
+    transform: translateX(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes blurInRight {
+  from {
+    opacity: 0;
+    filter: blur(20px);
+    transform: translateX(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes blurInScale {
+  from {
+    opacity: 0;
+    filter: blur(20px);
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1);
+  }
+}
+
+.animate-blurIn {
+  animation: blurIn 0.8s ease-out forwards;
+}
+
+.animate-blurInUp {
+  animation: blurInUp 0.8s ease-out forwards;
+}
+
+.animate-blurInLeft {
+  animation: blurInLeft 0.8s ease-out forwards;
+}
+
+.animate-blurInRight {
+  animation: blurInRight 0.8s ease-out forwards;
+}
+
+.animate-blurInScale {
+  animation: blurInScale 0.8s ease-out forwards;
+}
+
+/* Staggered blur-in for multiple elements */
+.blur-in-stagger > * {
+  opacity: 0;
+  filter: blur(20px);
+  transform: scale(0.95);
+  animation: blurIn 0.8s ease-out forwards;
+}
+
+.blur-in-stagger > *:nth-child(1) { animation-delay: 0.1s; }
+.blur-in-stagger > *:nth-child(2) { animation-delay: 0.2s; }
+.blur-in-stagger > *:nth-child(3) { animation-delay: 0.3s; }
+.blur-in-stagger > *:nth-child(4) { animation-delay: 0.4s; }
+.blur-in-stagger > *:nth-child(5) { animation-delay: 0.5s; }
+.blur-in-stagger > *:nth-child(6) { animation-delay: 0.6s; }
+.blur-in-stagger > *:nth-child(7) { animation-delay: 0.7s; }
+.blur-in-stagger > *:nth-child(8) { animation-delay: 0.8s; }
+.blur-in-stagger > *:nth-child(9) { animation-delay: 0.9s; }
+.blur-in-stagger > *:nth-child(10) { animation-delay: 1.0s; }
