@@ -1420,9 +1420,9 @@ export default function HomePage() {
               <div className="bg-white rounded-3xl shadow-xl p-12 interactive-card">
                 <div className="flex flex-col md:flex-row items-center gap-8">
                   <div className="w-56 h-48 rounded-full overflow-hidden shadow-xl animate-cosmicFloat">
-                    <img 
-                      src="/images/Mostafa.jpeg" 
-                      alt="Mostafa Mubarak - Founder of Hestya" 
+                                  <img
+                src="/images/Mostafa.webp"
+                alt="Mostafa Mubarak - Founder of Hestya" 
                       className="w-full h-full object-cover"
                     />
                   </div>
