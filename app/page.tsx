@@ -1,7 +1,7 @@
 'use client';
 
 import { PhoneFrame } from '../components/PhoneFrame';
-import { CreditCard, Calendar, Bell, AlertTriangle, Wrench, ArrowRight, Star, Users, Shield, Zap, Home, Building2, Settings, MessageSquare, DollarSign, TrendingDown, Globe, Award, CheckCircle, Package, Car, FileText, ShoppingCart, Check, ChevronDown } from 'lucide-react';
+import { CreditCard, Calendar, Bell, AlertTriangle, Wrench, ArrowRight, Star, Users, Shield, Zap, Home, Building2, Settings, MessageSquare, DollarSign, TrendingDown, Globe, Award, CheckCircle, Package, Car, FileText, ShoppingCart, Check, ChevronDown } from '../components/Icons';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
