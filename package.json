@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "rm -rf .next out && next build",
     "start": "next start",
     "export": "next build && next export",
-    "build:cf": "npm run build && echo 'Build completed successfully for Cloudflare Pages'"
+    "build:cf": "rm -rf .next out && npm run build && echo 'Build completed successfully for Cloudflare Pages'"
   },
   "dependencies": {
     "framer-motion": "^10.18.0",
